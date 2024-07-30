@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Policy PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Policy certificationActions="Remediated,Mitigated,Delegated" configPage="sodpolicy.xhtml" executor="sailpoint.policy.SODPolicyExecutor" name="DEMO Role SOD Policy" state="Active" type="SOD" typeKey="policy_type_sod" violationOwnerType="Manager">
+  <PolicyAlert disabled="true" escalationStyle="none"/>
+  <Attributes>
+    <Map>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taskResultId" value="0a160a038d681af6818d89bba69a1cab"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <SODConstraints>
+    <SODConstraint disabled="true" name="new rule" violationOwnerType="None">
+      <Attributes>
+        <Map>
+          <entry key="taskResultId" value="c0a801b890f01006819100926bd505d0"/>
+        </Map>
+      </Attributes>
+      <LeftBundles>
+        <Reference class="sailpoint.object.Bundle" name="Demo Business Role1"/>
+      </LeftBundles>
+      <RightBundles>
+        <Reference class="sailpoint.object.Bundle" name="Demo Business Role2"/>
+      </RightBundles>
+    </SODConstraint>
+  </SODConstraints>
+</Policy>

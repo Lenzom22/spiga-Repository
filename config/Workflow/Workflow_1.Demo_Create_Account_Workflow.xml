@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Workflow PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Workflow explicitTransitions="true" name="1.Demo Create Account Workflow">
+  <Variable initializer="true" name="trace"/>
+  <Description>Demo Create Account Workflow</Description>
+  <Step action="script:System.out.println(&quot;Workflow started...................&quot;);" icon="Start" name="Start" posX="20" posY="20">
+    <Transition to="Input Form"/>
+  </Step>
+  <Step action="rule:1. CreateAccount_Plan_Rule" icon="Default" name="Joiner" posX="306" posY="17">
+    <Transition to="Stop"/>
+  </Step>
+  <Step action="script:System.out.println(&quot;Workflow stopped..................&quot;);" icon="Stop" name="Stop" posX="414" posY="167"/>
+  <Step action="script:System.out.println(&quot;Workflow generic step............&quot;);" icon="Default" name="Input Form" posX="200" posY="150">
+    <Approval name="Test Form Iden" owner="spadmin" return="identityName" send="">
+      <Form name="Test Form Iden">
+        <Attributes>
+          <Map>
+            <entry key="hideIncompleteFields">
+              <value>
+                <Boolean/>
+              </value>
+            </entry>
+            <entry key="includeHiddenFields">
+              <value>
+                <Boolean/>
+              </value>
+            </entry>
+            <entry key="pageTitle" value="Test Form Iden"/>
+          </Map>
+        </Attributes>
+        <Section name="Section 1">
+          <Field displayName="Identity Name" name="identityName" type="sailpoint.object.Identity"/>
+        </Section>
+        <Button action="next" label="Next"/>
+        <Button action="back" label="Back"/>
+      </Form>
+    </Approval>
+    <Transition to="Joiner"/>
+  </Step>
+</Workflow>

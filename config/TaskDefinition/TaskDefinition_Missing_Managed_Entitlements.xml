@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE TaskDefinition PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<TaskDefinition name="Missing Managed Entitlements" resultAction="Delete" subType="task_item_type_system" type="System">
+  <Attributes>
+    <Map>
+      <entry key="TaskSchedule.host"/>
+      <entry key="applications" value="AD Logical Application"/>
+      <entry key="taskCompletionEmailNotify" value="Disabled"/>
+      <entry key="taskCompletionEmailRecipients"/>
+      <entry key="taskCompletionEmailTemplate"/>
+    </Map>
+  </Attributes>
+  <Description>Creates missing managed entitlement objects for the applications specified.</Description>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Parent>
+    <Reference class="sailpoint.object.TaskDefinition" name="Missing Managed Entitlements Scan"/>
+  </Parent>
+</TaskDefinition>

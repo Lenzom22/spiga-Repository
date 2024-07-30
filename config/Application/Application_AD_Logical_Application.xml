@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.DefaultLogicalConnector" featuresString="COMPOSITE, DISCOVER_SCHEMA" icon="enterpriseIcon" name="AD Logical Application" profileClass="" type="Logical">
+  <Attributes>
+    <Map>
+      <entry key="RetainEntitlementOverRemove">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule"/>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="compositeDefinition">
+        <value>
+          <CompositeDefinition accountRule="" primaryTier="Active Directory Application" remediationRule="">
+            <Tiers>
+              <Tier application="Active Directory Application" correlationRule="">
+                <IdentitySelector>
+                  <MatchExpression>
+                    <MatchTerm name="memberOf" type="Entitlement" value="CN=Developer,OU=Security Groups,OU=group32,DC=sailpoint,DC=local">
+                      <ApplicationRef>
+                        <Reference class="sailpoint.object.Application" name="Active Directory Application"/>
+                      </ApplicationRef>
+                    </MatchTerm>
+                    <MatchTerm name="memberOf" type="Entitlement" value="CN=Engineer,OU=Security Groups,OU=group32,DC=sailpoint,DC=local">
+                      <ApplicationRef>
+                        <Reference class="sailpoint.object.Application" name="Active Directory Application"/>
+                      </ApplicationRef>
+                    </MatchTerm>
+                  </MatchExpression>
+                </IdentitySelector>
+              </Tier>
+            </Tiers>
+          </CompositeDefinition>
+        </value>
+      </entry>
+      <entry key="deltaAggregation">
+        <value>
+          <Map>
+            <entry key="dc=sailpoint,dc=local">
+              <value>
+                <Map>
+                  <entry key="groups_cookie" value="TVNEUwMAAAAS1aFeURTaAQAAAAAAAAAAKAAAAHXAAAAAAAAAAAAAAAAAAAB1wAAAAAAAANZu5OJ5&#13;&#10;iXJHgKAzvDJzya4BAAAAAAAAAAEAAAAAAAAA1m7k4nmJckeAoDO8MnPJrnXAAAAAAAAA"/>
+                  <entry key="lastDirsyncServer" value="10.22.10.50"/>
+                  <entry key="users_cookie" value="TVNEUwMAAAAtFwMyURTaAQAAAAAAAAAAKAAAAHTAAAAAAAAAAAAAAAAAAAB0wAAAAAAAANZu5OJ5&#13;&#10;iXJHgKAzvDJzya4BAAAAAAAAAAEAAAAAAAAA1m7k4nmJckeAoDO8MnPJrnXAAAAAAAAA"/>
+                </Map>
+              </value>
+            </entry>
+          </Map>
+        </value>
+      </entry>
+      <entry key="disableLinkFiltering">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="disableManagedEntitlementFiltering">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="onDeleteRemoveEntitlements">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="templateApplication" value="Logical Template"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Schemas>
+    <Schema displayAttribute="cn" identityAttribute="dn" instanceAttribute="" nativeObjectType="account" objectType="account">
+      <AttributeDefinition name="cn" source="Active Directory Application.cn" type="string">
+        <Description>common name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="distinguishedName" source="Active Directory Application.distinguishedName" type="string">
+        <Description>distinguished name for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="givenName" source="Active Directory Application.givenName" type="string">
+        <Description>first name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="mail" source="Active Directory Application.mail" type="string">
+        <Description>RFC822 Mailbox</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="sn" source="Active Directory Application.sn" type="string">
+        <Description>last (family) name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="memberOf" schemaObjectType="group" source="Active Directory Application.memberOf" type="string">
+        <Description>Group Membership</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="employeeNumber" source="Active Directory Application.employeeNumber" type="string">
+        <Description/>
+      </AttributeDefinition>
+      <AttributeDefinition name="sAMAccountName" source="Active Directory Application.sAMAccountName" type="string">
+        <Description/>
+      </AttributeDefinition>
+    </Schema>
+    <Schema descriptionAttribute="" displayAttribute="cn" identityAttribute="cn" instanceAttribute="cn" nativeObjectType="group" objectType="group">
+      <AttributeDefinition name="cn" source="Active Directory Application.cn" type="string">
+        <Description>common name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="distinguishedName" source="Active Directory Application.distinguishedName" type="string">
+        <Description>distinguished name for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="owner" source="Active Directory Application.owner" type="string">
+        <Description>owner (of the object)</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="description" source="Active Directory Application.description" type="string">
+        <Description>descriptive information</Description>
+      </AttributeDefinition>
+      <AttributeDefinition entitlement="true" multi="true" name="memberOf" schemaObjectType="group" source="Active Directory Application.memberOf" type="string">
+        <Description>Group Membership</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="objectSid" source="Active Directory Application.objectSid" type="string">
+        <Description>Windows Security Identifier</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="objectguid" source="Active Directory Application.objectguid" type="string">
+        <Description>Object globally unique identifier </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="mailNickname" source="Active Directory Application.mailNickname" type="string">
+        <Description>Exchange Distribution Group Name</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="GroupType" source="Active Directory Application.GroupType" type="string">
+        <Description>Group Type</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="GroupScope" source="Active Directory Application.GroupScope" type="string">
+        <Description>Group Scope</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="sAMAccountName" source="Active Directory Application.sAMAccountName" type="string">
+        <Description>sAMAccountName</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="msDS-PrincipalName" source="Active Directory Application.msDS-PrincipalName" type="string">
+        <Description>Name of the entity in the format "NetBIOS domain name\sAMAccountName"</Description>
+      </AttributeDefinition>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>
