@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule language="beanshell" name="Demo Test Rule">
+  <Source><![CDATA[
+  
+  import sailpoint.api.SailpointContext;
+  import sailpoint.object.Identity;
+  import java.util.List;
+  import java.util.ArrayList;
+  import sailpoint.object.Link;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.object.Filter;
+  import sailpoint.object.TaskDefinition;
+  
+  
+  QueryOptions qo = new QueryOptions();
+  Filter filter = Filter.eq("type", "AccountAggregation");
+  qo.addFilter(filter);
+  
+  List lists = new ArrayList();
+  List TDs = context.getObjects(TaskDefinition.class, qo);
+  for(TaskDefinition TD : TDs){
+    String tasknames = TD.getName();
+    lists.add("Task Defination " + tasknames);
+  }
+  
+  return lists;
+  
+  
+  
+  
+  
+  
+ 
+  /*
+  List list = new ArrayList();
+  List idents = context.getObjects(Identity.class);
+  for(Identity id : idents){
+    List links = id.getLinks();
+    for(Link link : links){
+      String initials = link.getAttribute("Initials");
+      list.add("Initials" + initials);
+      
+    }
+   
+  }
+  return list;
+  */
+
+]]></Source>
+</Rule>

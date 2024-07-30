@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule language="beanshell" name="Policy Violation Rule">
+  <Source><![CDATA[
+
+
+  
+    import sailpoint.object.Identity;
+    import sailpoint.object.Role;
+    import sailpoint.object.Entitlement;
+    import sailpoint.api.SailPointContext;
+    import sailpoint.tools.GeneralException;
+    import java.util.Arrays;
+    import java.util.List;
+
+    // Main execution method
+    boolean checkPolicyViolation(SailPointContext context, Identity identity, Role role, Entitlement entitlement) throws GeneralException {
+      // List of Jobcodes to be restrained
+      List<String> jobcodeList = Arrays.asList("jobcode1", "jobcode2", "jobcode3"); // Add your specific jobcodes here
+
+      // Check if the identity's Jobcode is in the list
+      String jobcode = identity.getAttribute("Jobcode");
+      boolean isJobcodeMatch = jobcodeList.contains(jobcode);
+
+      // Check if the role's or entitlement's classification is "Production - no developer access"
+      String roleClassification = (String) role.getAttribute("classification");
+      String entitlementClassification = (String) entitlement.getAttribute("classification");
+      boolean isClassificationMatch = "Production - no developer access".equalsIgnoreCase(roleClassification) ||
+        "Production - no developer access".equalsIgnoreCase(entitlementClassification);
+
+      // Return true if both conditions are met
+      return isJobcodeMatch && isClassificationMatch;
+    }
+
+    // The method that IdentityIQ will call
+    public Object run(SailPointContext context, Identity identity, List roles, List entitlements, Policy policy) throws GeneralException {
+      for (Object roleObj : roles) {
+        Role role = (Role) roleObj;
+        for (Object entitlementObj : entitlements) {
+          Entitlement entitlement = (Entitlement) entitlementObj;
+          if (checkPolicyViolation(context, identity, role, entitlement)) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    // Note: The 'roles' and 'entitlements' lists are provided by IdentityIQ during policy evaluation
+  
+    
+]]></Source>
+</Rule>

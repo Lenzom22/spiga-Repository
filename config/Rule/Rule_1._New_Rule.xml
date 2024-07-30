@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule language="beanshell" name="1. New Rule">
+  <Source><![CDATA[
+  import sailpoint.object.*;
+  import sailpoint.api.*;
+  import java.util.List;
+  import java.util.ArrayList;
+  import java.util.Map;
+  import java.util.HashMap;
+  import java.util.Set;
+  import java.util.HashSet;
+  import org.apache.log4j.Logger;
+  import org.apache.commons.logging.Log;
+  import org.apache.commons.logging.LogFactory;
+  import sailpoint.object.Link;
+  
+  Log log = LogFactory.getLog("Dexperts");
+  log.debug("From Test Rule");
+  
+  /*
+  List list = new ArrayList();
+  Identity iden = context.getObjectByName(Identity.class, "AE180");
+  String fname = iden.getFirstname();
+  String lname = iden.getLastname();
+  String email = iden.getAttribute("email");
+  
+  list.add(fname);
+  list.add(lname);
+  list.add(email);
+  
+  return list;
+  
+  */
+  
+  /*
+  Identity identity = context.getObjectByName(Identity.class, "AE180");
+  Identity Manager = identity.getManager();
+  
+  String name = Manager.getName();
+ 
+  return name;
+  */
+  
+  
+ /*
+  List Idents = new ArrayList();
+  List ID = context.getObjects(Identity.class);
+  for(Identity idens : ID){
+    String names = idens.getName();
+    Idents.add(names);
+  }
+  
+  return Idents;
+ */
+ /*
+  List lists = new ArrayList();
+  Identity IDS = context.getObjectByName(Identity.class, "AE180");
+  List links = IDS.getLinks();
+  for(Link link : links){
+  List dep = link.getAttribute("department");
+  lists.add(dep);
+  }
+  return lists;
+  
+  */
+  Set sets = new HashSet();
+  List IDENS = context.getObjects(Identity.class);
+  for(Identity I : IDENS){
+    String NAMES = I.getName();
+ 
+  List LINKS = I.getLinks();
+  for(Link LINK : LINKS){
+    List dept = LINK.getAttribute("department");
+    sets.add(dept);
+  } 
+  }
+  return sets;
+  
+  ]]></Source>
+</Rule>
