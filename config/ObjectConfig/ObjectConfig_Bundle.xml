@@ -24,7 +24,7 @@
                 <Reference class="sailpoint.object.SPRight" name="ManageITRoles"/>
               </RequiredRights>
             </RoleTypeDefinition>
-            <RoleTypeDefinition displayName="Entitlement" icon="entitlementIcon" name="entitlement" noAssignmentSelector="true" noAutoAssignment="true" noIIQ="true" noManualAssignment="true" noPermits="true" noRequirements="true">
+            <RoleTypeDefinition displayName="Entitlement" icon="entitlementIcon" name="entitlement" noAssignmentSelector="true" noAutoAssignment="true" noDetectionUnlessAssigned="true" noIIQ="true" noManualAssignment="true" noPermits="true" noRequirements="true">
               <Description>Defines a single IT entitlement necessary to access data or perform a specific action within a target system.</Description>
               <RequiredRights>
                 <Reference class="sailpoint.object.SPRight" name="ManageEntitlementRoles"/>
