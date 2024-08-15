@@ -18,7 +18,7 @@
                 <Reference class="sailpoint.object.SPRight" name="ManageBusinessRoles"/>
               </RequiredRights>
             </RoleTypeDefinition>
-            <RoleTypeDefinition displayName="IT" icon="itIcon" name="it" noAssignmentSelector="true" noAutoAssignment="true" noIIQ="true" noManualAssignment="true" noPermits="true" noRequirements="true">
+            <RoleTypeDefinition displayName="IT" icon="itIcon" name="it" noAssignmentSelector="true" noAutoAssignment="true" noDetectionUnlessAssigned="true" noIIQ="true" noManualAssignment="true" noPermits="true" noRequirements="true">
               <Description>Defines a collection of IT entitlements which can be associated with Business Roles to provide users with specific access rights. IT Roles can be constrained to entitlements within a single application or expanded to include entitlements across applications.</Description>
               <RequiredRights>
                 <Reference class="sailpoint.object.SPRight" name="ManageITRoles"/>
